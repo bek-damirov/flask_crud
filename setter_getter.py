@@ -1,6 +1,6 @@
 class Student:
     def __init__(self, name):
-        self.__name=name
+        self.__name = name
 
     @property
     def name(self):
@@ -9,7 +9,7 @@ class Student:
     @name.setter
     def name(self, new_name):
         if new_name.isalpha():
-            self.__name = new_name
+             self.__name = new_name
         else:
             raise Exception('в имени не должно быть цифр')
 

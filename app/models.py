@@ -1,5 +1,7 @@
 from app import db, bcrypt, login_manager
 from flask_login import UserMixin
+from sqlalchemy import UniqueConstraint
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -22,6 +24,9 @@ class Student(db.Model):
     phone_number = db.Column(db.String)
     course = db.relationship(Course, backref=db.backref('students', lazy='dynamic'))
     course_id = db.Column(db.String, db.ForeignKey('course.id'))
+    __table_args__ = (UniqueConstraint('name', 'phone_number',
+                                       name='_question_answer_uc'),
+                      )
 
     def __repr__(self):
         return self.name
