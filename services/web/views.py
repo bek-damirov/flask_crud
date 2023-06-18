@@ -1,10 +1,9 @@
 from flask import render_template, redirect, url_for, request, flash
 from flask_login import login_user, logout_user, login_required
-from app import db, app
-from .models import Student, User
-from .forms import StudentForm, UserForm
-from .models import Course
-from .forms import CourseForm, UserForm
+from project import db
+from project import Student, User
+from project import Course
+from forms import CourseForm, UserForm, StudentForm
 
 
 def student_list():
@@ -108,8 +107,6 @@ def login_view():
     form = UserForm(request.form)
     if request.method == 'POST':
         if form.validate_on_submit():
-            # user = User()
-            # form.populate_obj(user)
             user = User.query.filter_by(username=request.form.get('username')).first()
             if user and user.check_password(request.form.get('password')):
                 login_user(user)

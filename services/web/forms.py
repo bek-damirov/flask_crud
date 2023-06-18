@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 import wtforms as ws
-from app import app, Course
+from project import app, Course
 from datetime import date
 
 
@@ -34,7 +34,7 @@ class StudentForm(FlaskForm):
                 self.course_choices.append((course.id, course.course_name))
         self._fields['course_id'].choices = self.course_choices
 
-    def validate(self):
+    def validate(self, extra_validators=None):
 
         if not super().validate():
             return False

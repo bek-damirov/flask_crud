@@ -4,3 +4,4 @@ flask-wtf
 flask-migrate
 flask-Bcrypt
 flask-login
+psycopg2-binary

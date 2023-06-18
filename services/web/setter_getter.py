@@ -18,7 +18,4 @@ class Student:
         raise Exception('удалять нельзя')
 
 
-s = Student(name='Iman')
-print(s.name)
-s.name = 'Bek'
-print(s.name)
+
